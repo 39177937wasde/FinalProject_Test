@@ -16,10 +16,9 @@ object ConfigModule : Module() {
 	override val bgcolor = Colors["#2b2b2b"]
 	override val  clipBorders=false
 	override val size = SizeInt(1024, 800)
-	override val windowSize = SizeInt(1280, 720)
-	override val fullscreen = true
+	override val windowSize = SizeInt(980, 720)
+	//override val fullscreen = true
 	override val mainScene =Menu::class
-
 	override suspend fun AsyncInjector.configure() {
 		mapPrototype { Menu() }
 		mapPrototype { Second_Menu() }

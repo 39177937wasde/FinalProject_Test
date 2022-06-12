@@ -1,18 +1,13 @@
 package Scene
 
-import PlayScreen
 import SharedData
 import com.soywiz.klock.milliseconds
 import com.soywiz.korge.input.onClick
 import com.soywiz.korge.scene.Scene
 import com.soywiz.korge.view.*
-import com.soywiz.korim.bitmap.Bitmap
-import com.soywiz.korim.bitmap.resized
 import com.soywiz.korim.color.Colors
 import com.soywiz.korim.format.readBitmap
 import com.soywiz.korio.file.std.resourcesVfs
-import com.soywiz.korma.geom.Anchor
-import com.soywiz.korma.geom.ScaleMode
 
 class Second_Menu() : Scene() {
     override suspend fun Container.sceneInit() {
@@ -79,52 +74,52 @@ class Second_Menu() : Scene() {
         maskman.playAnimationLooped(spriteDisplayTime = 80.milliseconds)
         val VRman: Sprite = sprite(character4_idle).xy(scaledWidth*3.75/5, 625.0)
         VRman.playAnimationLooped(spriteDisplayTime = 80.milliseconds)
-        val ok= resourcesVfs["ok.png"].readBitmap().resized(100,100, ScaleMode.FIT, Anchor.CENTER,native=true)
-        val close=resourcesVfs["close.png"].readBitmap().resized(100,100, ScaleMode.FIT, Anchor.CENTER,native=true)
+        var ok= resourcesVfs["ok.png"].readBitmap()
+        val close=resourcesVfs["close.png"].readBitmap()
         pinkman.onClick {
-            ook=image(ok).xy(width - 100, height - 350)
+            ook=image(ok).xy(width - 108, height - 350)//width - 100, height - 350
             closee=image(close).xy(0.0, height - 350)
-                closee.onClick {
-                    sceneContainer.changeTo<Second_Menu>()
-                }
+            closee.onClick {
+                sceneContainer.changeTo<Second_Menu>()
+            }
             ook.onClick {
-                SharedData.choose=1
+                SharedData.choose_player=1
                 sceneContainer.changeTo<Select_map>()
 
             }
         }
 
         frogman.onClick{
-            ook=image(ok).xy(width - 100, height - 350)
+            ook=image(ok).xy(width - 108, height - 350)
             closee=image(close).xy(0.0, height - 350)
             closee.onClick {
                 sceneContainer.changeTo<Second_Menu>()
             }
             ook.onClick {
-                SharedData.choose=2
+                SharedData.choose_player=2
                 sceneContainer.changeTo<Select_map>()
 
             }
         }
         maskman.onClick{
-            ook=image(ok).xy(width - 100, height - 350)
+            ook=image(ok).xy(width - 108, height - 350)
             closee=image(close).xy(0.0, height - 350)
             closee.onClick {
                 sceneContainer.changeTo<Second_Menu>()
             }
             ook.onClick {
-                SharedData.choose=3
+                SharedData.choose_player=3
                 sceneContainer.changeTo<Select_map>()
             }
         }
         VRman.onClick{
-            ook=image(ok).xy(width - 100, height - 350)
+            ook=image(ok).xy(width - 108, height - 350)
             closee=image(close).xy(0.0, height - 350)
             closee.onClick {
                 sceneContainer.changeTo<Second_Menu>()
             }
             ook.onClick {
-                SharedData.choose=4
+                SharedData.choose_player=4
                 sceneContainer.changeTo<Select_map>()
             }
         }
