@@ -54,7 +54,7 @@ class PlayScreen() : Scene() {
         var obstaclesHitbox: MutableList<Image> = mutableListOf<Image>()
         job=launch{
             repeat(100) {
-                var rand = (700..777).random()
+                var rand = (680..760).random()
                 var randX = (980..1000).random()
                 obstacles.add(Enemy(randX, rand).create())
            }
@@ -63,9 +63,9 @@ class PlayScreen() : Scene() {
         when(SharedData.pick_map){
             1->{tileset1 = TileSet(bitmap("background01.png")
                     .toBMP32()
-                    .scaleLinear(0.5, 1.0).slice())
+                    .scaleLinear(1.0, 1.0).slice())
                 tilemap1 = tileMap(
-                        Bitmap32(1,1),
+                        Bitmap32(1000,10),
                         repeatX = BaseTileMap.Repeat.REPEAT,
                         tileset = tileset1)
             }
@@ -102,13 +102,13 @@ class PlayScreen() : Scene() {
             launchImmediately {
                 frameBlock(144.timesPerSecond) {
                     while (stageMoving) {
-                        //job.start()
+                        job.start()
                         addChild(score)
                         tilemap1.x-=0.1
                         addChild(obstacles.get(i))
                        //var test=solidRect(obstaclesHitbox.get(i).width,obstaclesHitbox.get(i).height,Colors.BLUE).xy(obstaclesHitbox.get(i).x,obstaclesHitbox.get(i).y)
-                            obstacles.get(i).x -= 1.55
-                            if(obstacles.get(i).x<=0){
+                            obstacles.get(i).x -= 1.5
+                            if(obstacles.get(i).x<=-10){
                                 removeChild(obstacles.get(i))
                                 //removeChild(obstaclesHitbox.get(i))
                                 i++
@@ -137,7 +137,7 @@ class PlayScreen() : Scene() {
                     offsetBetweenColumns = 0,
                     offsetBetweenRows = 0
             )
-            val player: Sprite = sprite(runAnimation).xy(150, 625)
+            val player: Sprite = sprite(runAnimation).xy(300, 625)
             player.playAnimationLooped(spriteDisplayTime = 80.milliseconds)
 
 
